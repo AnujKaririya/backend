@@ -1,0 +1,13 @@
+$kind: http-request
+description: ""
+url: http://localhost:3000/api/v1/users/getUserChannelProfile
+method: POST
+body:
+  type: json
+  content: |-
+    {
+      "username": "anuj_kumar"
+    }
+auth:
+  type: noauth
+order: 5000

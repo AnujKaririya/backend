@@ -1,0 +1,4 @@
+$kind: http-request
+url: http://localhost:3000/api/v1/comments/c/6aeb89f73e61357eafd230d0
+method: DELETE
+order: 3000

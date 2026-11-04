@@ -1,0 +1,4 @@
+$kind: http-request
+url: http://localhost:3000/api/v1/videos/toggle/publish/6ae738422555e014157fb5cf
+method: PATCH
+order: 18000

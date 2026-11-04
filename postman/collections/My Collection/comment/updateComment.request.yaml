@@ -1,0 +1,10 @@
+$kind: http-request
+url: http://localhost:3000/api/v1/comments/c/6aeb89f73e61357eafd230d0
+method: PATCH
+body:
+  type: json
+  content: |-
+    {
+      "content":"good luck for next day!"
+    }
+order: 2000

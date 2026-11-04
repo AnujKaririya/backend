@@ -1,0 +1,14 @@
+$kind: http-request
+description: ""
+url: http://localhost:3000/api/v1/users/subscribe
+method: POST
+body:
+  type: json
+  content: |-
+    {
+      "userUsername":"lokesh_kumar",
+      "channelUsername":"anuj_kumar"
+    }
+auth:
+  type: noauth
+order: 4000

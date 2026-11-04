@@ -1,0 +1,5 @@
+$kind: http-request
+description: for delete a vedio by id
+url: http://localhost:3000/api/v1/videos/6aead90c694e7206ce9a7087
+method: DELETE
+order: 14000

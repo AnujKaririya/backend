@@ -1,0 +1,27 @@
+$kind: http-request
+description: ""
+url: http://localhost:3000/api/v1/videos/
+method: POST
+body:
+  type: formdata
+  content:
+    - type: text
+      key: title
+      value: javascipt
+    - type: text
+      key: description
+      value: javascript tutorial
+    - type: file
+      key: videoFile
+      src:
+        - /C:/Users/anujk/OneDrive/Pictures/Camera Roll 1/WIN_20241026_11_22_31_Pro.mp4
+    - type: file
+      key: thumbnail
+      src:
+        - /C:/Users/anujk/OneDrive/Pictures/Camera Roll 1/WIN_20250818_18_32_16_Pro.jpg
+    - type: text
+      key: duration
+      value: "10"
+auth:
+  type: noauth
+order: 15000

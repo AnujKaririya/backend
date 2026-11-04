@@ -1,0 +1,13 @@
+version: 1
+id: ae8246a1-bb7f-4991-b0ed-4e1328571ada
+name: new_tool
+description: ''
+inputSchema:
+  type: object
+  properties: {}
+implementation:
+  type: local-script
+  runtime: postman-sandbox
+  language: javascript
+  src: ./new-tool.js
+title: New tool

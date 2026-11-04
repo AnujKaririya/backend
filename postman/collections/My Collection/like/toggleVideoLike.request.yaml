@@ -1,0 +1,11 @@
+$kind: http-request
+url: http://localhost:3000/api/v1/likes/toggle/v/6aeba961910964b37d118f82
+method: POST
+body:
+  type: json
+  content: |-
+    {
+      "email": "anujkaririya006@gmail.com",
+      "password": "asdd@sddfef"
+    }
+order: 1000

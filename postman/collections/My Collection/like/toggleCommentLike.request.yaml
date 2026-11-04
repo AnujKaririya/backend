@@ -1,0 +1,4 @@
+$kind: http-request
+url: http://localhost:3000/api/v1/likes/toggle/c/6aeb98d6df971a356dbb44b5
+method: POST
+order: 2000

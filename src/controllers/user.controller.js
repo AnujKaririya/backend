@@ -1,5 +1,6 @@
 import { asyncHandler } from "../utils/AsyncHandler.js";
 import { User } from "../models/user.model.js";
+import { Subscription } from "../models/subscription.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import {ApiResponse} from "../utils/ApiResponse.js"
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
@@ -63,7 +64,7 @@ const registerUser=asyncHandler(async(req,res)=>{
     
 
     const avatar = await uploadOnCloudinary(avatarLocalPath)
-const coverImage = coverImageLocalPath
+    const coverImage = coverImageLocalPath
     ? await uploadOnCloudinary(coverImageLocalPath)
     : null
 
@@ -234,8 +235,7 @@ const updateUserAvatar = asyncHandler(async(req, res) => {
         throw new ApiError(400, "Avatar file is missing")
     }
 
-    //TODO: delete old image - assignment
-
+    
     const avatar = await uploadOnCloudinary(avatarLocalPath)
 
     if (!avatar.url) {
@@ -259,6 +259,103 @@ const updateUserAvatar = asyncHandler(async(req, res) => {
         new ApiResponse(200, user, "Avatar image updated successfully")
     )
 })
+//subscribe
+const subscribe=asyncHandler(async(req,res)=>{
+    const {userUsername,channelUsername}=req.body
+    const user=await User.findOne({username:userUsername})
+    const channel=await User.findOne({username:channelUsername})
+    if(!user){
+        throw new ApiError(401,"username does not exists")  
+    }
+    if(!channel){
+        throw new ApiError(401,"channel does not exists")  
+    }
+    //entry of subscribe in database
+    const subscribe = await Subscription.create({
+        subscriber: user?._id,
+        channel:channel._id
+    })
+    // remove password and refresh token field from response
+    const createdSubscribe = await Subscription.findById(subscribe._id)
+
+    if (!createdSubscribe) {
+        throw new ApiError(500, "Something went wrong while registering the user subscribe")
+    }
+    // return res
+    return res.status(201).json(
+        new ApiResponse(200, createdSubscribe, " user subscribe registered Successfully")
+    )
+})
+//getUserChannelProfile
+const getUserChannelProfile=asyncHandler(async(req,res)=>{
+    const {username}=req.body
+    if(!username){
+        throw new ApiError(404,"username required")
+    }
+    const user=await User.findOne({username:username})
+    if(!user){
+        throw new ApiError(409,"username is not correct")
+    }
+    console.log(user.username)
+    console.log(user._id)
+     const channel=await User.aggregate([
+        {
+            $match:{
+                _id:user._id
+            }
+        },
+            //finding subscribers of user
+           { $lookup:{
+                from:"subscriptions",
+                localField:"_id",
+                foreignField:"channel",
+                as:"subscribers"
+            }
+        },
+            //finding channel whose user is subscriber
+            {$lookup:{
+                from:"subscriptions",
+                localField:"_id",
+                foreignField:"subscriber",
+                as:"subscribedTo"
+            }
+        },
+            //counting subscribers and subscribeTo
+            {$addFields:{
+                subscribersCount: {
+                    $size: "$subscribers"
+                },
+                channelsSubscribedToCount: {
+                    $size: "$subscribedTo"
+                }
+            }
+        },
+            //what to show in channel
+            {$project:{
+                fullName: 1,
+                username: 1,
+                subscribersCount: 1,
+                channelsSubscribedToCount: 1,
+                avatar: 1,
+                coverImage: 1,
+                email: 1
+            }
+        }
+    ]
+     )
+     console.log(user);
+     console.log("**************************")
+     console.log(channel)
+
+     if (!channel?.length) {
+        throw new ApiError(404, "channel does not exists")
+    }
+     res
+     .status(200)
+     .json(
+        new ApiResponse(201,channel, "user chanel profile")
+    )
+})
 
 export {registerUser}
 export {loginUser}
@@ -266,3 +363,5 @@ export {logoutUser}
 export {changeCurrentPassword}
 export {updateAccountDetails}
 export {updateUserAvatar}
+export {subscribe}
+export {getUserChannelProfile}

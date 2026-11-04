@@ -1,0 +1,14 @@
+$kind: http-request
+description: ""
+url: http://localhost:3000/api/v1/users/loginUser
+method: POST
+body:
+  type: json
+  content: |-
+    {
+      "email": "lokeshkaririya006@gmail.com",
+      "password":"lokesh@1234"
+    }
+auth:
+  type: noauth
+order: 3000

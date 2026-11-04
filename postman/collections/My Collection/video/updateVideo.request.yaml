@@ -1,0 +1,27 @@
+$kind: http-request
+description: ""
+url: http://localhost:3000/api/v1/videos/6ae738422555e014157fb5cf
+method: PATCH
+body:
+  type: formdata
+  content:
+    - type: file
+      key: thumbnail
+      src:
+        - /C:/Users/anujk/OneDrive/Pictures/Camera Roll
+          1/WIN_20251025_18_56_05_Pro.jpg
+      description: ""
+      disabled: false
+    - type: text
+      key: title
+      value: python
+      description: ""
+      disabled: false
+    - type: text
+      key: description
+      value: python tutorial
+      description: ""
+      disabled: false
+auth:
+  type: noauth
+order: 17000

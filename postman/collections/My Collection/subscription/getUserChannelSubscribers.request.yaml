@@ -1,0 +1,8 @@
+$kind: http-request
+description: ""
+url: http://localhost:3000/api/v1/subscriptions/u/6adcc1aacdcb595ef88075de
+method: GET
+body:
+  type: json
+  content: ""
+order: 3000

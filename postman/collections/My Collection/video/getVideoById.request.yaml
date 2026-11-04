@@ -1,0 +1,11 @@
+$kind: http-request
+url: http://localhost:3000/api/v1/videos/6ae738422555e014157fb5cf
+method: GET
+body:
+  type: json
+  content: |-
+    {
+      "email": "anujkaririya006@gmail.com",
+      "password": "asdd@sddfef"
+    }
+order: 19000

@@ -1,0 +1,14 @@
+$kind: http-request
+description: ""
+url: http://localhost:3000/api/v1/videos/?query=javascript&sortBy=views&sortType=asc
+method: GET
+queryParams:
+  query: javascript
+  sortBy: views
+  sortType: asc
+body:
+  type: json
+  content: ""
+auth:
+  type: noauth
+order: 16000

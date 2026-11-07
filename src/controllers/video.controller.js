@@ -23,7 +23,7 @@ const getAllVideos = asyncHandler(async (req, res) => {
     const videos = await Video.find({
     isPublished: true,
     title: { $regex: query, $options: "i" }
-    })
+    }).populate("owner", "username email avatar")
     .sort(sortOptions)
     .skip((pageNumber-1)*limitNumber)
     .limit(limitNumber);
@@ -90,7 +90,7 @@ const publishAVideo = asyncHandler(async (req, res) => {
 const getVideoById = asyncHandler(async (req, res) => {
     const { videoId } = req.params
     //TODO: get video by id
-    const video=await Video.findById(videoId)
+    const video=await Video.findById(videoId).populate("owner", "username email avatar")
     if(!video){
         throw new ApiError(404,"no video found")
     }

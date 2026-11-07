@@ -1,0 +1,4 @@
+$kind: http-request
+url: http://localhost:3000/api/v1/dashboards/watchHistory
+method: GET
+order: 3000

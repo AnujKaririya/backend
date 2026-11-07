@@ -1,0 +1,11 @@
+$kind: http-request
+url: http://localhost:3000/api/v1/tweets/6aec2f40dc5fa7de88db492d
+method: PATCH
+body:
+  type: json
+  content: "{\r
+
+    \    \"content\":\"does god beleive in someone!\"\r
+
+    }"
+order: 2000

@@ -1,5 +1,8 @@
 workspace:
   id: e31a6905-5253-4dce-8148-22b3c0315af7
+
+# Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
+
 cloudResources:
   collections:
-    ../postman/collections/My Collection: 58414465-c5d1fc7f-aed2-42cb-b0a3-b483b5c6f259
+    ../postman/collections/YoutubeCollection: 58414465-c5d1fc7f-aed2-42cb-b0a3-b483b5c6f259

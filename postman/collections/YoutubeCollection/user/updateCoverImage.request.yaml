@@ -1,0 +1,13 @@
+$kind: http-request
+url: http://localhost:3000/api/v1/users/coverImage
+method: PATCH
+body:
+  type: formdata
+  content:
+    - type: file
+      key: coverImage
+      src:
+        - /C:/Users/anujk/OneDrive/Pictures/Camera Roll 1/WIN_20250902_20_46_26_Pro.jpg
+      description: ""
+      disabled: false
+order: 9000

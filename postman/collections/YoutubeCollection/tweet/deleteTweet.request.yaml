@@ -1,0 +1,4 @@
+$kind: http-request
+url: http://localhost:3000/api/v1/tweets/6aec2f40dc5fa7de88db492d
+method: DELETE
+order: 3000

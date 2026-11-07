@@ -1,0 +1,4 @@
+$kind: http-request
+url: http://localhost:3000/api/v1/playlists/user/6ad5e5d8fdb1ea00a08fe77f
+method: GET
+order: 7000

@@ -1,0 +1,4 @@
+$kind: http-request
+url: http://localhost:3000/api/v1/playlists/add/6aeba961910964b37d118f82/6aed90d68eb7fae2de1f4bbf
+method: PATCH
+order: 5000

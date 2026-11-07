@@ -67,10 +67,10 @@ const updateComment = asyncHandler(async (req, res) => {
         commentId,
         { $set: {content}},
         { new: true, runValidators: true }
-    );
+    )
     return res.status(200).json(
         new ApiResponse(200, updated, "Comment updated successfully")
-    );  
+    )
 })
 
 const deleteComment = asyncHandler(async (req, res) => {
@@ -86,9 +86,9 @@ const deleteComment = asyncHandler(async (req, res) => {
         throw new ApiError(403, "You cannot delete someone else's comment");
     }
     // delete comment
-    const updated = await Comment.findByIdAndDelete(commentId)
+    const deleted = await Comment.findByIdAndDelete(commentId)
     return res.status(200).json(
-        new ApiResponse(200, updated, "Comment deleted successfully")
+        new ApiResponse(200, deleted, "Comment deleted successfully")
     );  
 })
 

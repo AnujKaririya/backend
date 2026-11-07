@@ -1,0 +1,13 @@
+$kind: http-request
+url: http://localhost:3000/api/v1/users/avatar
+method: PATCH
+body:
+  type: formdata
+  content:
+    - type: file
+      key: avatar
+      src:
+        - /C:/Users/anujk/OneDrive/Pictures/Camera Roll 1/WIN_20251025_18_56_05_Pro.jpg
+      description: ""
+      disabled: false
+order: 7000

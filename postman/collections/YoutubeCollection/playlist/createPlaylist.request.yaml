@@ -1,0 +1,13 @@
+$kind: http-request
+url: http://localhost:3000/api/v1/playlists/
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"name\":\"holly\",\r
+
+    \    \"description\":\"outside songs\"\r
+
+    }"
+order: 1000
